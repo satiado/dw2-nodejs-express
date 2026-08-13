@@ -38,7 +38,7 @@ const loadUser = (function (user) {
     `<p>Carregando as informações do usuário : <strong>${user}</strong>...</p>`,
   );
 
-  //Mostrado as informações após 3 segundos
+  //Mostrado as informações aps 3 segundos
   setTimeout(() => {
     document.write(`
         Nome: Satio Daniel De Freitas<br>
