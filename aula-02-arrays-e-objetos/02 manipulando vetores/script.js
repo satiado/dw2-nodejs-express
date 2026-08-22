@@ -31,6 +31,7 @@ document.write(`<p>O primeiro item da lista é ${frutasOrdenadas[0]}</p>`);
 
 document.write(`<p>A lista de frutas ordenadas é: ${frutasOrdenadas}</p><br><br>`);
 
+
 //MÉTODO SORT: ORDENADO EM ORDEM CRESCENTE E DESCRESCENTE
 let numeros = [6, 8, 2, 3, 800, 200];
 
