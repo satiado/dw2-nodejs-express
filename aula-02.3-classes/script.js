@@ -24,5 +24,25 @@ document.write(
 
 const carroEsportivo = new Carro("Ferrari", "Spider", "2026");
 
-doxument.write(
+document.write(
   `<p>O carro esportivo ${carroEsportivo.marca} do modelo ${carroEsportivo.modelo} é do ano ${carroEsportivo.ano}, e quando buzina faz ${carroEsportivo.buzinar()}</p>`);
+
+  //CRIANDO UMA NOVA INSTÂNCIA: CARRO CONVERSÍVEL
+  const carroConversivel = new Carro();
+  carroConversível.marca="Chevrolet";
+  carroConversível.modelo="Camaro";
+  carroConversível.ano="2026";
+
+  //Adicionando um NOVO ATRIBUTO não (previsto na classe)
+  carroConversivel.corNeon = "Azul";
+  //adicionando um NOVO MÉTODO (não previsto na classe)
+carroConversivel.turbo = function () {
+  return "Vrummmmmmmmmmmmmmmm! O carro está acelerando!!!";
+};
+
+document.write(
+  `O carro ${carroConversivel.marca} ${carroConversivel.modelo} tem neon da cor ${carroConversivel.corNeon}.`
+)
+document.write(
+  `<p>${carroConversivel.turbo()}</p>`
+)
