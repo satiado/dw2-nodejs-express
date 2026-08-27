@@ -30,7 +30,7 @@ homemAranha.sentidoAranha = function () {
   return "Detecta um perigo";
 };
 document.write(
-  `<p>O <strong>${homemAranha.nome}</strong> tem uma quantidade de vida de ${homemAranha.vida}, velocidade ${homemAranha.velocidade} e força ${homemAranha.forca}. Ele também ${homemAranha.teia} e tem um sentido que ${homemAranha.sentidoAranha()}, e por isso ele está ${homemAranha.correr()} atrás do perigo.</p>`,
+  `<p>O <strong>${homemAranha.nome}</strong> tem uma quantidade de vida de ${homemAranha.vida}, velocidade ${homemAranha.velocidade} e força ${homemAranha.forca}. Ele também ${homemAranha.teia} e tem um sentido que ${homemAranha.sentidoAranha()}, e por isso ele está ${homemAranha.correr()} atrás do perigo.</p><br>`,
 );
 
 //SUPERMAN
@@ -40,7 +40,7 @@ superman.visaoCalor = function () {
   return "Visão de Calor";
 };
 document.write(
-  `<p>O <strong>${superman.nome}</strong> tem vida de ${superman.vida}, velocidade ${superman.velocidade} e força de ${superman.forca}. Ele possui uma ${superman.visaoCalor()} que ele usa para derrotar os inimigos, e quando está em emergência ele ${superman.voar}, mas agora ele está ${superman.andar()}. </p>`,
+  `<p>O <strong>${superman.nome}</strong> tem vida de ${superman.vida}, velocidade ${superman.velocidade} e força de ${superman.forca}. Ele possui uma ${superman.visaoCalor()} que ele usa para derrotar os inimigos, e quando está em emergência ele ${superman.voar}, mas agora ele está ${superman.andar()}. </p><br>`,
 );
 
 //BATMAN
