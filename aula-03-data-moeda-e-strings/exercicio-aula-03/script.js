@@ -38,3 +38,9 @@ data.setDate(data.getDate() + 12)
 document.write(`<p>Se eu comprar algo hoje ${dia}/${mes}/${ano}, e ele for demorar <strong>12 dias</strong> para chegar, eu receberia dia ${data.getDate()}/${mes}/${ano}</p>`)
 
 document.write("<br><br><p>Exercício 05</p>");
+const nome = "satio";
+const nomeFormatado = nome
+.split(" ")
+.map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1)).join(" ");
+document.write(`<p>O ${nomeFormatado} foi quem realizou e concluiu essa atividaade!</p>`)
+
