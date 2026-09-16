@@ -1,0 +1,21 @@
+<!-- importando o cabeçalho -->
+<%- include ('partials/header.ejs')%>
+<!-- importando a navbar -->
+<%- include ('partials/navbar.ejs')%>
+
+    <h4 style="text-align: center;">Página de produtos</h4>
+
+    <!-- Comentário em EJS -->
+     <%# Comentário#%>
+
+    <!-- Chamando a variável para ser exibida na página -->
+    <%#= produtos #%>
+
+    <!-- Percorrnedo a lista de produtos através do forEach: -->
+    <% produtos.forEach(produto => { %>
+        <p>Produto: <%= produto.nome %></p>
+        <p>Marca: <%= produto.marca %></p>
+        <p>Preço: <%= produto.preco %></p>
+    <% }) %>
+
+<%- include ('partials/footer.ejs')%>
