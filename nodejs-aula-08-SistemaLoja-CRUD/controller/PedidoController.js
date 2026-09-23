@@ -1,19 +1,20 @@
 //importando o express
 import express from "express";
+//importando o model
+import Pedido from "../models/Pedido.js";
 const rota = express.Router();
-
 
 // ROTA PEDIDOS
 rota.get("/pedidos",function(req,res){
-    const pedidos = [
-        {numero: "983721931", valor: 1200},
-        {numero: "983721932", valor: 900},
-        {numero: "983721933", valor: 3200},
-        {numero: "983721934", valor: 150}
-    ]
-    res.render("pedidos", {
-        pedidos: pedidos
-    })
-})
+    //Selecionando todos os clientes do banco de dados (PROMISSE)
+    Pedido.findAll().then(pedidos => {
+        res.render("pedidos", {
+            //Enviando a lista de pedidos para a página HTML(front-end)
+            pedidos: pedidos
+        });        
+    }).catch((error) => {
+        console.log(`Ocorreu um erro ao listar os Pedidos. Erro: ${error}`)
+    });
+});
 
 export default rota;

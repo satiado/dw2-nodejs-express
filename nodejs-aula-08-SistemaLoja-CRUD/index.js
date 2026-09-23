@@ -2,7 +2,7 @@
 //const express = require("express")
 import express from 'express';
 //importando arquivo de conexão do sequelize
-import conection from "./config/sequelize-config.js";
+import connection from "./config/sequelize-config.js";
 // Iniciando o Express 
 const app = express() 
 
@@ -14,7 +14,14 @@ import indexController from "./controller/IndexController.js"
 import pedidoController from "./controller/PedidoController.js"
 //importando a rota produto
 import produtoController from "./controller/ProdutoController.js"
-import connection from './config/sequelize-config.js';
+
+//importando os models
+//importando o model Cliente
+import Cliente from "./models/Cliente.js";
+//importando o model Pedido
+import Pedido from "./models/Pedido.js";
+//importando o modelo produtos
+import Produto from "./models/Produto.js";
 
 //CONFIGURAÇÕES DO EXPRESS
 // Define o EJS como Renderizador de páginas
@@ -30,6 +37,14 @@ connection.authenticate().then(()=> {
     //falha na promessa
     console.log(`Ocorreu um erro ao se conectar com o banco de dados. Erro: ${error}`)
 });
+
+//Criando o banco de dados se ele não existir
+const DB_NAME = "loja";
+connection.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME};`).then(() => {
+    console.log(`O banco de dados ${DB_NAME} está criado!`);
+}).catch((error) => {
+    console.log(`Ocorreu um erro ao criar o banco de dados. Erro: ${error}`);
+})
 
 //iniciando a rota cliente
 app.use("/",clienteController);
