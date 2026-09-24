@@ -6,6 +6,8 @@ import connection from "../config/sequelize-config.js";
 //importando a biblioteca Sequelize
 import Sequelize from "sequelize";
 
+
+
 //o método define() define a estrutura de uma tabela no banco
 const Cliente = connection.define('clientes',{
     //Atributos da tabela clientes

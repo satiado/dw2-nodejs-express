@@ -4,6 +4,7 @@ import express from "express";
 import Cliente from "../models/Cliente.js";
 const rota = express.Router();
 
+
 // ROTA CLIENTES
 rota.get("/clientes",function(req,res){
     //Selecionando todos os clientes do banco de dados (PROMISSE)
@@ -14,6 +15,26 @@ rota.get("/clientes",function(req,res){
         });        
     }).catch(error => {
         console.log(`Ocorreu um erro ao listar os clientes. Erro: ${error}`)
+    });
+});
+
+//ROTA DE CADASTRO DE CLIENTES
+rota.post("/clientes/cadastrar", (req,res) => {
+    //capturando os dados vindo do formulário e gravando nas variáveis
+    const nome = req.body.nome
+    const cpf = req.body.cpf
+    const endereco = req.body.endereco
+    //chamando o model para gravar os dados no banco
+    //Equivalente ao INSERT INTO
+    Cliente.create({
+        // NOME DA COLUNA | VARIÁVEL
+        nome: nome,
+        cpf: cpf,
+        endereco: endereco,
+    }).then(()=>{
+        res.redirect("/clientes")
+    }).catch((error) => {
+        `Ocorreu um erro ao cadastrar o cliente. Erro: ${error}`
     });
 });
 

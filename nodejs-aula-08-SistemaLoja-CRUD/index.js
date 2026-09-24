@@ -1,19 +1,19 @@
 // Importando o Express
 //const express = require("express")
-import express from 'express';
+import express from "express";
 //importando arquivo de conexão do sequelize
 import connection from "./config/sequelize-config.js";
-// Iniciando o Express 
-const app = express() 
+// Iniciando o Express
+const app = express();
 
 //importando a rota cliente
-import clienteController from "./controller/ClienteController.js"
+import clienteController from "./controller/ClienteController.js";
 //importando a rota index
-import indexController from "./controller/IndexController.js"
+import indexController from "./controller/IndexController.js";
 //importando a rota pedido
-import pedidoController from "./controller/PedidoController.js"
+import pedidoController from "./controller/PedidoController.js";
 //importando a rota produto
-import produtoController from "./controller/ProdutoController.js"
+import produtoController from "./controller/ProdutoController.js";
 
 //importando os models
 //importando o model Cliente
@@ -24,45 +24,53 @@ import Pedido from "./models/Pedido.js";
 import Produto from "./models/Produto.js";
 
 //CONFIGURAÇÕES DO EXPRESS
+//Configurando oexpress para permitir dados através de formulários
+app.use(express.urlencoded({ extended: false }));
 // Define o EJS como Renderizador de páginas
-app.set('view engine', 'ejs')
+app.set("view engine", "ejs");
 // Define o uso da pasta "public" para uso de arquivos estáticos
-app.use(express.static('public'))
+app.use(express.static("public"));
 
 //REALIZANDO A CONEXÃO COM O BANCO DE DADOS
-connection.authenticate().then(()=> {
+connection
+  .authenticate()
+  .then(() => {
     //sucesso na promessa
     console.log("Conexão com o banco de dados realizada com sucesso!");
-}).catch((error) => {
+  })
+  .catch((error) => {
     //falha na promessa
-    console.log(`Ocorreu um erro ao se conectar com o banco de dados. Erro: ${error}`)
-});
+    console.log(
+      `Ocorreu um erro ao se conectar com o banco de dados. Erro: ${error}`,
+    );
+  });
 
 //Criando o banco de dados se ele não existir
 const DB_NAME = "loja";
-connection.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME};`).then(() => {
+connection
+  .query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME};`)
+  .then(() => {
     console.log(`O banco de dados ${DB_NAME} está criado!`);
-}).catch((error) => {
+  })
+  .catch((error) => {
     console.log(`Ocorreu um erro ao criar o banco de dados. Erro: ${error}`);
-})
+  });
 
 //iniciando a rota cliente
-app.use("/",clienteController);
+app.use("/", clienteController);
 //iniciando a rota index
-app.use("/",indexController);
+app.use("/", indexController);
 //iniciando a rota pedido
-app.use("/",pedidoController);
+app.use("/", pedidoController);
 //iniciando a produto
-app.use("/",produtoController);
-
+app.use("/", produtoController);
 
 // INICIA O SERVIDOR NA PORTA 8080
 const port = 8080;
-app.listen(port,function(erro){
-    if(erro) {
-        console.log("Ocorreu um erro!")
-
-    }else{
-        console.log(`Servidor iniciado com sucesso em http://localhost:${port}`)
-    }
-})
+app.listen(port, function (erro) {
+  if (erro) {
+    console.log("Ocorreu um erro!");
+  } else {
+    console.log(`Servidor iniciado com sucesso em http://localhost:${port}`);
+  }
+});
